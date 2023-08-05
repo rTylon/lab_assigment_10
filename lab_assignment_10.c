@@ -18,7 +18,7 @@ void insert(Trie *pTrie, char *word)
     Trie *temp = pTrie;
     for (int i = 0; i < strlen(word); i++)
     {
-        if (!temp->children[word[i] - 'a'])
+        if (temp->children[word[i] - 'a'] == NULL)
             temp->children[word[i] - 'a'] = createTrie();
         temp = temp->children[word[i] - 'a'];
     }
@@ -60,8 +60,7 @@ Trie *deallocateTrie(Trie *pTrie)
 // Initializes a trie structure
 Trie *createTrie(void)
 {
-    Trie *pNode = NULL;
-    pNode = malloc(sizeof(Trie));
+    Trie *pNode = malloc(sizeof(Trie));
     pNode->count = 0;
     if (pNode)
     {
